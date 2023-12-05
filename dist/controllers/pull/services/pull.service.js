@@ -81,6 +81,15 @@ class PullService {
                     code: '004',
                 });
             }
+            if (number < 1) {
+                throw new app_response_1.AppErrorResponse({
+                    statusCode: 404,
+                    description: 'Not Found',
+                    name: 'Cannot request less than 1 task',
+                    isOperational: true,
+                    code: '008',
+                });
+            }
             const browser = yield puppeteer_1.default.launch();
             const page = yield browser.newPage();
             yield page.goto('https://trello.com/b/QvHVksDa/personal-work-goals');

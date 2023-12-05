@@ -253,7 +253,7 @@ class PushService {
                 const secondPTag = allPTags[1];
                 const thirdTag = allPTags[2];
                 
-                await new Promise(r => setTimeout(r, 1000));
+                await new Promise(r => setTimeout(r, 3000));
                 await page.evaluate((p, text) => {
                     p.textContent = text;
                 }, secondPTag, 'PushByNumber');

@@ -86,6 +86,16 @@ class PullService {
     });
     }
 
+    if (number < 1) {
+      throw new AppErrorResponse({
+        statusCode: 404,
+        description: 'Not Found',
+        name: 'Cannot request less than 1 task',
+        isOperational: true,
+        code: '008',
+    });
+    }
+
     const browser = await puppeteer.launch()
 
     const page = await browser.newPage();
@@ -119,6 +129,7 @@ class PullService {
 
     return tasksByNumber
   }
+
 }
 
 

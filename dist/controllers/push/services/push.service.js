@@ -219,7 +219,7 @@ class PushService {
                         // Ensure there are enough <p> tags
                         const secondPTag = allPTags[1];
                         const thirdTag = allPTags[2];
-                        yield new Promise(r => setTimeout(r, 1000));
+                        yield new Promise(r => setTimeout(r, 3000));
                         yield page.evaluate((p, text) => {
                             p.textContent = text;
                         }, secondPTag, 'PushByNumber');
