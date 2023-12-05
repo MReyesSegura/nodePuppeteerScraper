@@ -3,32 +3,44 @@ import type { Request, Response } from 'express'
 
 import { pullService } from './services/pull.service'
 
-import { appErrorResponseHandler, appSuccessResponseHandler } from '../../application/handlers/response'
+import { appErrorResponseHandler } from '../../application/handlers/response'
 
-import type { AppControllerResponse } from '../../application/models/app.response'
 
 class PullController {
-  public async createUsers (req: Request, res: Response): Promise<AppControllerResponse> {
-    const user = req.body.user
+  public async pullFiveTasks (req: Request, res: Response): Promise<any> {
 
     try {
-      const response = await pullService.createUsers(user)
-      const result = appSuccessResponseHandler('success', response)
-      return res.status(200).json(result)
+      const response = await pullService.pullFiveTasks()
+      const data = JSON.stringify(response)
+      res.redirect(`/api/push/pushFiveTasks?data=${data}`)
     } catch (error) {
+      console.log(error)
       const { statusCode } = appErrorResponseHandler(error)
       return res.status(statusCode).json(error)
     }
   }
 
-  public async login (req: Request, res: Response): Promise<AppControllerResponse> {
-    const body = req.body
+  public async pullAllTasks (req: Request, res: Response): Promise<any> {
 
     try {
-      const response = await pullService.login(body)
-      const result = appSuccessResponseHandler('success', response)
-      return res.status(200).json(result)
+      const response = await pullService.pullAllTasks()
+      const data = JSON.stringify(response)
+      res.redirect(`/api/push/pushAllTasks?data=${data}`)
     } catch (error) {
+      console.log(error)
+      const { statusCode } = appErrorResponseHandler(error)
+      return res.status(statusCode).json(error)
+    }
+  }
+
+  public async pullByNumber (req: Request, res: Response): Promise<any> {
+    const number = parseInt(req.query.number?.toString() ?? '')
+    try {
+      const response = await pullService.pullByNumber(number)
+      const data = JSON.stringify(response)
+      res.redirect(`/api/push/pushByNumber?data=${data}`)
+    } catch (error) {
+      console.log(error)
       const { statusCode } = appErrorResponseHandler(error)
       return res.status(statusCode).json(error)
     }

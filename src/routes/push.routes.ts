@@ -2,7 +2,7 @@
 import { ServerRouter } from './models/route'
 /* dtos */
 import { type RequestHandler } from 'express'
-import { pullController } from '../controllers/pull/pull.controller'
+import { pushController } from '../controllers/push/push.controller'
 
 class PullRoutes extends ServerRouter {
   constructor () {
@@ -11,9 +11,9 @@ class PullRoutes extends ServerRouter {
   }
 
   config (): void {
-    this.router.get('/pullFivetasks', pullController.pullFiveTasks as RequestHandler)
-    this.router.get('/pullAllTasks', pullController.pullAllTasks as RequestHandler)
-    this.router.get('/pullByNumber', pullController.pullByNumber as RequestHandler)
+    this.router.get('/pushFivetasks', pushController.pushFiveTasks as RequestHandler)
+    this.router.get('/pushAllTasks', pushController.pushAllTasks as RequestHandler)
+    this.router.get('/pushByNumber', pushController.pushByNumber as RequestHandler)
   }
 }
 

@@ -10,6 +10,7 @@ import bodyParser from 'body-parser'
 import http from 'http'
 
 import pullRoutes from './routes/pull.routes'
+import pushRoutes from './routes/push.routes'
 
 /* app class */
 export class AppServer {
@@ -49,6 +50,7 @@ export class AppServer {
     this.app.use('/assets', express.static(path.resolve(__dirname, '../public')))
  
     this.app.use('/api/pull', pullRoutes)
+    this.app.use('/api/push', pushRoutes)
 
   }
 

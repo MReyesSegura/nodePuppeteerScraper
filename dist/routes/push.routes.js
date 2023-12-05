@@ -2,16 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable @typescript-eslint/no-misused-promises */
 const route_1 = require("./models/route");
-const pull_controller_1 = require("../controllers/pull/pull.controller");
+const push_controller_1 = require("../controllers/push/push.controller");
 class PullRoutes extends route_1.ServerRouter {
     constructor() {
         super();
         this.config();
     }
     config() {
-        this.router.get('/pullFivetasks', pull_controller_1.pullController.pullFiveTasks);
-        this.router.get('/pullAllTasks', pull_controller_1.pullController.pullAllTasks);
-        this.router.get('/pullByNumber', pull_controller_1.pullController.pullByNumber);
+        this.router.get('/pushFivetasks', push_controller_1.pushController.pushFiveTasks);
+        this.router.get('/pushAllTasks', push_controller_1.pushController.pushAllTasks);
+        this.router.get('/pushByNumber', push_controller_1.pushController.pushByNumber);
     }
 }
 const pullRoutes = new PullRoutes();

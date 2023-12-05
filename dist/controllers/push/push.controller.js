@@ -9,46 +9,50 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pullController = void 0;
-const pull_service_1 = require("./services/pull.service");
+exports.pushController = void 0;
+const push_service_1 = require("./services/push.service");
 const response_1 = require("../../application/handlers/response");
-class PullController {
-    pullFiveTasks(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield pull_service_1.pullService.pullFiveTasks();
-                const data = JSON.stringify(response);
-                res.redirect(`/api/push/pushFiveTasks?data=${data}`);
-            }
-            catch (error) {
-                console.log(error);
-                const { statusCode } = (0, response_1.appErrorResponseHandler)(error);
-                return res.status(statusCode).json(error);
-            }
-        });
-    }
-    pullAllTasks(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield pull_service_1.pullService.pullAllTasks();
-                const data = JSON.stringify(response);
-                res.redirect(`/api/push/pushAllTasks?data=${data}`);
-            }
-            catch (error) {
-                console.log(error);
-                const { statusCode } = (0, response_1.appErrorResponseHandler)(error);
-                return res.status(statusCode).json(error);
-            }
-        });
-    }
-    pullByNumber(req, res) {
+class PushController {
+    pushFiveTasks(req, res) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function* () {
-            const number = parseInt((_b = (_a = req.query.number) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : '');
+            const data = (_b = (_a = req.query.data) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : '';
             try {
-                const response = yield pull_service_1.pullService.pullByNumber(number);
-                const data = JSON.stringify(response);
-                res.redirect(`/api/push/pushByNumber?data=${data}`);
+                const response = yield push_service_1.pushService.pushFiveTasks(data);
+                const result = (0, response_1.appSuccessResponseHandler)('success', response);
+                return res.status(200).json(result);
+            }
+            catch (error) {
+                console.log(error);
+                const { statusCode } = (0, response_1.appErrorResponseHandler)(error);
+                return res.status(statusCode).json(error);
+            }
+        });
+    }
+    pushAllTasks(req, res) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = (_b = (_a = req.query.data) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : '';
+            try {
+                const response = yield push_service_1.pushService.pushAllTasks(data);
+                const result = (0, response_1.appSuccessResponseHandler)('success', response);
+                return res.status(200).json(result);
+            }
+            catch (error) {
+                console.log(error);
+                const { statusCode } = (0, response_1.appErrorResponseHandler)(error);
+                return res.status(statusCode).json(error);
+            }
+        });
+    }
+    pushByNumber(req, res) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = (_b = (_a = req.query.data) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : '';
+            try {
+                const response = yield push_service_1.pushService.pushByNumber(data);
+                const result = (0, response_1.appSuccessResponseHandler)('success', response);
+                return res.status(200).json(result);
             }
             catch (error) {
                 console.log(error);
@@ -58,4 +62,4 @@ class PullController {
         });
     }
 }
-exports.pullController = new PullController();
+exports.pushController = new PushController();

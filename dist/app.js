@@ -14,6 +14,7 @@ const express_session_1 = __importDefault(require("express-session"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const http_1 = __importDefault(require("http"));
 const pull_routes_1 = __importDefault(require("./routes/pull.routes"));
+const push_routes_1 = __importDefault(require("./routes/push.routes"));
 /* app class */
 class AppServer {
     constructor() {
@@ -39,6 +40,7 @@ class AppServer {
     routes() {
         this.app.use('/assets', express_1.default.static(path_1.default.resolve(__dirname, '../public')));
         this.app.use('/api/pull', pull_routes_1.default);
+        this.app.use('/api/push', push_routes_1.default);
     }
     start() {
         this.server.listen(this.app.get('port'), () => {

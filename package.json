@@ -14,6 +14,7 @@
     "morgan": "^1.10.0",
     "node-device-detector": "^2.0.17",
     "nodemon": "^3.0.1",
+    "puppeteer": "^21.5.2",
     "typescript": "^5.2.2"
   },
   "scripts": {
