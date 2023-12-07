@@ -10,7 +10,7 @@ This API allows you to scrape tasks from Trello and push them to Todoist.
 **Available Routes:**
 
 - **Pull 5 Tasks from Trello:**
-  - -Method GET-
+  - *Method GET*
   - Route: http://localhost:5050/api/pull/pullFivetasks
   - Description: Pulls 5 tasks from Trello and pushes them to Todoist.
 
