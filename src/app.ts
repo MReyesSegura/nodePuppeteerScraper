@@ -1,4 +1,3 @@
-/* aliases an environment variables */
 import 'dotenv/config'
 
 import express, { type Application } from 'express'
@@ -12,7 +11,6 @@ import http from 'http'
 import pullRoutes from './routes/pull.routes'
 import pushRoutes from './routes/push.routes'
 
-/* app class */
 export class AppServer {
   public app: Application
 
@@ -23,7 +21,6 @@ export class AppServer {
 
     this.server = http.createServer(this.app)
 
-    /* init methods */
     this.config()
     this.routes()
   }
@@ -36,7 +33,7 @@ export class AppServer {
     this.app.use(bodyParser.urlencoded({ extended: true }))
     this.app.use(
       session({
-        secret: '123456@@@', // Change this to a strong, unique secret
+        secret: '123456@@@', 
         resave: true,
         saveUninitialized: true
       })
