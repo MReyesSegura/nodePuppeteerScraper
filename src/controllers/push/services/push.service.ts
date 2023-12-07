@@ -62,7 +62,6 @@ class PushService {
                 await new Promise(r => setTimeout(r, 1000));
                 const allPTags = await page.$$('p');
         
-                // Ensure there are enough <p> tags
                 const secondPTag = allPTags[1];
                 const thirdTag = allPTags[2];
                 
@@ -155,7 +154,6 @@ class PushService {
             await new Promise(r => setTimeout(r, 1000));
             const allPTags = await page.$$('p');
     
-            // Ensure there are enough <p> tags
             const secondPTag = allPTags[1];
             const thirdTag = allPTags[2];
             
@@ -249,7 +247,6 @@ class PushService {
                 await new Promise(r => setTimeout(r, 1000));
                 const allPTags = await page.$$('p');
         
-                // Ensure there are enough <p> tags
                 const secondPTag = allPTags[1];
                 const thirdTag = allPTags[2];
                 
